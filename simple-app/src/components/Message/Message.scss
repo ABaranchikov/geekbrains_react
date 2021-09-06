@@ -1,0 +1,12 @@
+$font: 32px;
+
+.MessageHeader {
+    font-size: $font;
+    color: black;
+}
+
+.MessageText{
+    font-size: $font;
+    color: red;
+    font-style: italic;
+}
