@@ -1,0 +1,96 @@
+/*https://codepen.io/drehimself/pen/KdXwxR*/
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+$green: #86BB71;
+$blue: #94C2ED;
+$orange: #E38968;
+$gray: #92959E;
+
+body {
+  background: #C5DDEB;
+  font: 14px/20px "Lato", Arial, sans-serif;
+  padding: 40px 0;
+  color: white;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.App {
+  margin: 0 auto;
+  width: 750px;
+  background: #444753;
+  border-radius: 5px;
+}
+
+.Chat {
+  width: 490px;
+  float:left;
+  background: #F2F5F8;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;  
+  color: #434651;
+}
+
+.ChatHistory {
+  padding: 30px 30px 20px;
+  border-bottom: 2px solid white;
+  overflow-y: scroll;
+  height: 575px;
+}
+
+.ChatMarker {
+  list-style-type: none;
+}
+
+.AlignLeft {
+  text-align: left;
+}
+
+.AlignRight {
+  text-align: right;
+}
+
+.FloatRight {
+  float: right;
+}
+
+.Clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+.ChatMessage {
+  padding: 30px;
+}
+
+.ChatMessageText {
+  width: 100%;
+  border: none;
+  padding: 10px 20px;
+  font: 14px/22px "Lato", Arial, sans-serif;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  resize: none;  
+}
+    
+.ChatMessageBtn {
+  float: right;
+  color: $blue;
+  font-size: 16px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: #F2F5F8;
+}
+
+.ChatMessageBtn:hover {
+  color: darken($blue, 7%);
+}

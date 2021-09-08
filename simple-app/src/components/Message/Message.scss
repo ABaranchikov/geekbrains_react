@@ -1,12 +1,53 @@
-$font: 32px;
+/*https://codepen.io/drehimself/pen/KdXwxR*/
 
-.MessageHeader {
-    font-size: $font;
-    color: black;
+$green: #86BB71;
+$blue: #94C2ED;
+$orange: #E38968;
+$gray: #92959E;
+
+.MessageData {
+    margin-bottom: 15px;
+}
+  
+.MessageDataTime {
+    color: lighten($gray, 8%);
+    padding-left: 6px;
+}
+  
+.Message {      
+    color: white;
+    padding: 18px 20px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 7px;
+    margin-bottom: 30px;
+    width: 90%;
+    position: relative;
+  }
+
+.Message:after {
+    bottom: 100%;
+    left: 7%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: $green;
+    border-width: 10px;
+    margin-left: -10px;
+}
+  
+.MyMessage {
+    background: $green;
+}
+  
+.OtherMessage {
+    background: $blue;
 }
 
-.MessageText{
-    font-size: $font;
-    color: red;
-    font-style: italic;
-}
+.OtherMessage:after {
+    border-bottom-color: $blue;
+    left: 93%;
+}   
