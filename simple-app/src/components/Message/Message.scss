@@ -1,53 +1,50 @@
-/*https://codepen.io/drehimself/pen/KdXwxR*/
-
-$green: #86BB71;
-$blue: #94C2ED;
-$orange: #E38968;
-$gray: #92959E;
-
-.MessageData {
-    margin-bottom: 15px;
-}
   
-.MessageDataTime {
-    color: lighten($gray, 8%);
-    padding-left: 6px;
-}
-  
-.Message {      
-    color: white;
-    padding: 18px 20px;
-    line-height: 26px;
-    font-size: 16px;
-    border-radius: 7px;
-    margin-bottom: 30px;
-    width: 90%;
-    position: relative;
+  .MessageImg {
+    width: 40px;
+    border-radius: 50%;
   }
 
-.Message:after {
-    bottom: 100%;
-    left: 7%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-bottom-color: $green;
-    border-width: 10px;
-    margin-left: -10px;
-}
+  .MessageImgRight {
+   margin: 0 10px 0 0;
+  }
   
-.MyMessage {
-    background: $green;
-}
+  .MessageTxt {
+    margin: 0;
+    padding: 0;
+  }
   
-.OtherMessage {
-    background: $blue;
-}
+  .MessageContainer {
+    border-radius: 20px;
+    padding: 10px;
+    
+    position: relative;
+    min-width: 300px;
+    font-size: 0.9em;
+    background: yellow;
+  }
 
-.OtherMessage:after {
-    border-bottom-color: $blue;
-    left: 93%;
-}   
+  .MessageDate {
+    position: absolute;
+    right: 0;
+    bottom: -15px;
+    font-size: 10px;
+    margin: 0;
+    padding: 0;
+    color: black;
+  }
+
+  .MessageDateSend {
+    left: 0;
+  }
+  
+  .SendTxt {    
+    background: #435f7a;
+    color: #f5f5f5;
+    margin: 0 0 0 10px;
+  }
+  
+  .RepliesTxt {    
+    background: #f5f5f5;
+    color: #435f7a;
+    margin: 0 10px 0 0;
+  }
