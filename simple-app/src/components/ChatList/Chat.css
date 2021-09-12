@@ -1,0 +1,57 @@
+.ChatList {
+    margin: 0;
+    padding: 10px 10px;
+  }
+
+.ContactImg {
+    width: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.ContactName {
+    font-weight: 600;
+}
+
+.ChatLink {
+    text-decoration: none;
+    color: #32465a;
+}
+
+.ChatItem {
+   
+}
+
+.DeleteBtn {    
+    background: white;
+    border: none;
+    color: #32465a;
+    padding: 0 5px;
+    margin: 0px;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .DeleteBtn:hover {
+	background: 32465a;
+	color: white;
+    outline: none;
+    border: none;
+}
+
+.DeleteBtn:focus {
+    background: white;
+    color: #32465a;
+    outline: none;
+    border: none;
+}
+ 
+
+.FormChat {
+    padding: 5px 10px;
+}
+
+.FormChatBtn {
+    float: right;
+    margin: 5px 10px 0 0;
+}
