@@ -2,11 +2,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Routes } from './components/Routes';
 import './App.scss';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
-function App() { 
+function App() {
 
   return (
-    <Routes/>
+    <Provider store={store}>
+      <Routes />
+    </Provider>
   );
 }
 
