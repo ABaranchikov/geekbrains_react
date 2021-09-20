@@ -19,8 +19,7 @@ export const Routes = () => {
                 </Route>
                 <Route path="/profile">
                     <Profile />
-                </Route>
-                
+                </Route>                
                 <Route>
                     <h4>404</h4>
                 </Route>
