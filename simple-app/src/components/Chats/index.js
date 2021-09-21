@@ -3,10 +3,10 @@ import { useParams, Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'react-bootstrap';
-import { ChatList } from '../ChatList';
+import { ChatList } from '../ChatList/ChatListContainer';
 
 import { selectIfChatExists } from '../../store/chats/selectors';
-import { MessageList } from '../MessageList';
+import { MessageList } from '../MessageList/MessageListContainer';
 
 
 export const Chats = () => {
