@@ -26,7 +26,8 @@ export const Chats = () => {
                         <ChatList />
                     </Col>
                     <Col md={8} className="Content m-0 p-0">
-                        <MessageList chatId={chatId} chatExists={chatExists} />
+                        {/* <MessageList chatId={chatId} chatExists={chatExists} /> */}
+                        <MessageList chatId={chatId} /> 
                     </Col>
                 </Row>
             </Container>
