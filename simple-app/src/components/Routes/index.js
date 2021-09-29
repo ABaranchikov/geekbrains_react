@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import { Home } from '../Home';
 import { Chats } from '../Chats';
@@ -8,16 +8,20 @@ import { PublicRoute } from '../PublicRoute';
 import { PrivateRoute } from '../PrivateRoute';
 import { login, signUp, signOut, auth } from '../../services/firebase';
 import { onAuthStateChanged } from '@firebase/auth';
+import { useDispatch } from 'react-redux';
+import { setAuthed } from '../../store/profile/actions';
 
 export const Routes = () => {
-    const [authed, setAuthed] = useState(false);
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
+            console.log('login');
+            console.log(user);
             if (user) {
-                setAuthed(true);
+                dispatch(setAuthed(true));
             } else {
-                setAuthed(false);
+                dispatch(setAuthed(false));
             }
         });
         return unsubscribe;
@@ -26,7 +30,6 @@ export const Routes = () => {
     const handleLogin = async (email, pass) => {
         try {
             await login(email, pass);
-            // setAuthed(true);
         } catch (error) {
             console.log(error);
         }
@@ -35,7 +38,6 @@ export const Routes = () => {
     const handleSignUp = async (email, pass) => {
         try {
             await signUp(email, pass);
-            //  setAuthed(true);
         } catch (error) {
             console.log(error);
         }
@@ -45,7 +47,6 @@ export const Routes = () => {
         console.log("logout");
         try {
             await signOut();
-            //   setAuthed(false);
         } catch (error) {
             console.log(error);
         }
@@ -58,16 +59,16 @@ export const Routes = () => {
             <Link className="Menu" to="/chats">Chats</Link>
             <Link className="Menu" to="/profile">Profile</Link>
             <Switch>
-                <PublicRoute path="/login" exact authed={authed}>
+                <PublicRoute path="/login" exact>
                     <Home onLogin={handleLogin} />
                 </PublicRoute>
-                <PublicRoute path="/signup" exact authed={authed}>
+                <PublicRoute path="/signup" exact >
                     <Home onSignUp={handleSignUp} />
                 </PublicRoute>
-                <PrivateRoute path="/chats/:chatId?" authed={authed}>
+                <PrivateRoute path="/chats/:chatId?">
                     <Chats />
                 </PrivateRoute>
-                <PrivateRoute path="/profile" authed={authed} >
+                <PrivateRoute path="/profile">
                     <Profile onLogout={handleLogout} />
                 </PrivateRoute>
                 <Route path="/memes" component={Memes} />

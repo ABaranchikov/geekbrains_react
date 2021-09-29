@@ -5,9 +5,6 @@ import { Message } from '../Message'
 
 
 export const MessageListView = ({ chatId, messages, chatExists, onAddMessage, onDeleteMessage }) => {
-    console.log("message =");
-    console.log(chatId);
-    console.log(chatExists);
     return (
         <Card className="m-0 p-0">
             {!!chatId && chatExists && (
@@ -17,7 +14,7 @@ export const MessageListView = ({ chatId, messages, chatExists, onAddMessage, on
                     </Card.Header>
                     <Card.Body className="Messages">
                         <div className="Scrollable">
-                            {(messages[chatId] || []).map((message) => (<Message key={message.id} message={message} onDeleteMessage={onDeleteMessage} />))}
+                            {(Object.values(messages[chatId] || {}) || []).map((message) => (<Message key={message.id} message={message} onDeleteMessage={onDeleteMessage} />))}
                         </div>
                     </Card.Body>
                     <Card.Footer>

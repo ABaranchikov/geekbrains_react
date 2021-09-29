@@ -1,38 +1,30 @@
 import { useEffect, useState } from "react";
+import { initUserName, setUserNameFb } from "../../store/profile/actions";
 import { useDispatch, useSelector } from "react-redux";
-
-import { db } from "../../services/firebase";
-import { ref, onValue, set } from "@firebase/database";
+import { selectUserName } from "../../store/profile/selectors";
 
 export const Profile = ({ onLogout }) => {
-    const [name, setName] = useState("");
+    const dispatch = useDispatch();
+    const name = useSelector(selectUserName);
+
     const [value, setValue] = useState("");
     const handleLogout = () => {
         onLogout();
     }
 
     useEffect(() => {
-        const userDbRef = ref(db, "user");
-        onValue(userDbRef, (snapshot) => {
-            const data = snapshot.val();
-            console.log('-------', data);
-            setName(data?.username || '');
-        })
+        dispatch(initUserName());
     }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        dispatch(setUserNameFb(value));
         setValue("");
-        set(ref(db, "user"), {
-            username: value,
-        })
     }
 
     const handleChange = (e) => {
         setValue(e.target.value);
-    
     }
-
 
     return (
         <>
@@ -44,8 +36,9 @@ export const Profile = ({ onLogout }) => {
                 <input type="text" value={value} onChange={handleChange} />
                 <button type="submit">Submit</button>
             </form>
-
-            <div>{name}</div>
+            
+        
+            <h2>{name}</h2>
         </>
     );
 }

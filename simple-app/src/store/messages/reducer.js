@@ -1,9 +1,9 @@
-import { DELETE_CHAT } from "../chats/actions";
-import { ADD_MESSAGE, DELETE_MESSAGE } from "./actions";
+import { ADD_MESSAGE, DELETE_MESSAGE, SET_MESSAGES } from "./actions";
+import { DELETE_CHAT, ADD_CHAT } from "../chats/actions";
 
 const initialState = {
-    messages: {}
-}
+    messages: {},
+};
 
 export const messagesReducer = (state = initialState, { type, payload }) => {
     switch (type) {
@@ -12,43 +12,47 @@ export const messagesReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 messages: {
                     ...state.messages,
-                    [payload.chatId]: [...state.messages[payload.chatId] || [],
-                    {
-                        id: `message-${Date.now()}`,
-                        text: payload.text,
-                        author: payload.author,
-                        date: payload.date
-                    },
+                    [payload.chatId]: [
+                        ...(state.messages[payload.chatId] || []),
+                        {
+                            id: `message-${Date.now()}`,
+                            text: payload.text,
+                            author: payload.author,
+                            date: payload.date
+                        },
                     ],
-
-                }
-
-            }
+                },
+            };
         }
         case DELETE_MESSAGE: {
             const newChatMessages = state.messages[payload.chatId].filter(
                 ({ id }) => id !== payload.id
             );
+
             return {
                 ...state,
                 messages: {
                     ...state.messages,
                     [payload.chatId]: newChatMessages,
-                }
-            }
+                },
+            };
         }
         case DELETE_CHAT: {
             const newMessages = { ...state.messages };
-            delete state.messages[payload]
+            delete state.messages[payload];
+
             return {
                 ...state,
-                messages: {
-                    ...state.messages,
-                    messages: newMessages,
-                }
-            }
+                messages: newMessages,
+            };
+        }
+        case SET_MESSAGES: {
+            return {
+                ...state,
+                messages: payload,
+            };
         }
         default:
             return state;
     }
-}
+};

@@ -2,7 +2,6 @@ import { put, call, takeLatest } from 'redux-saga/effects'
 import { API_MEMES, LIMIT } from '../../utils/constants';
 import { getMemesLoading, getMemesFail, getMemesSuccess, GET_MEMES } from './actions';
 
-// Worker saga will be fired on ADD_MESSAGE actions
 function* getNewMemes({ payload }) {
     try {
         yield put(getMemesLoading());
@@ -21,7 +20,6 @@ function* getNewMemes({ payload }) {
     }
 }
 
-// Starts addBotMessage on each dispatched ADD_MESSAGE action
 export default function* watchGetMemes() {
     yield takeLatest(GET_MEMES, getNewMemes);
 }
