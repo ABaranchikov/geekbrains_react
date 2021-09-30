@@ -1,22 +1,44 @@
+import { useEffect, useState } from "react";
+import { initUserName, setUserNameFb } from "../../store/profile/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleCheckBox } from "../../store/profile/actions";
-import { selectProfileChecked } from '../../store/profile/selectors';
+import { selectUserName } from "../../store/profile/selectors";
 
-export const Profile = () => {
-    const checked = useSelector(selectProfileChecked);
+export const Profile = ({ onLogout }) => {
     const dispatch = useDispatch();
+    const name = useSelector(selectUserName);
 
-    const handleClick = () => {
-        dispatch(toggleCheckBox)
-    };
+    const [value, setValue] = useState("");
+    const handleLogout = () => {
+        onLogout();
+    }
+
+    useEffect(() => {
+        dispatch(initUserName());
+    }, []);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(setUserNameFb(value));
+        setValue("");
+    }
+
+    const handleChange = (e) => {
+        setValue(e.target.value);
+    }
+
     return (
         <>
             <h3>This is Profile page</h3>
-            <div>
-                <input type="checkbox" id="scales" name="scales" readOnly checked={checked}/>
-                <label >Checkbox</label>
-            </div>
-            <button onClick={handleClick}>Click to change state</button>
+
+            <button onClick={handleLogout}>Logout</button>
+
+            <form onSubmit={handleSubmit}>
+                <input type="text" value={value} onChange={handleChange} />
+                <button type="submit">Submit</button>
+            </form>
+            
+        
+            <h2>{name}</h2>
         </>
     );
 }

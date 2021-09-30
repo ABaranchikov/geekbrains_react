@@ -1,25 +1,26 @@
-import { TOGGLE_CHECKBOX, TOGGLE_SHOW_NAME } from "./actions"
+import { SET_AUTHED, SET_NAME } from "./actions"
 
 const initialState = {
-    showName: false,
-    checked: false,
+    name: "",
+    authed: false,
 }
 
-export const profileReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case TOGGLE_SHOW_NAME: {
+export const profileReducer = (state = initialState, { type, payload }) => {
+    switch (type) {
+        case SET_NAME: {
             return {
                 ...state,
-                showName: !state.showName,
+                name: payload,
             }
         }
-        case TOGGLE_CHECKBOX: {
+        case SET_AUTHED: {
             return {
                 ...state,
-                checked: !state.checked,
+                authed: payload,
             }
         }
         default:
             return state;
     }
 }
+
