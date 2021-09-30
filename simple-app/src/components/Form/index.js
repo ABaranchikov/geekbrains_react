@@ -19,9 +19,9 @@ export const FormChat = ({ onSubmit }) => {
     }
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form data-testid="form" onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
-                <Form.Control as="textarea" placeholder="Write your message..." value={value} onChange={handleChange} ref={inputRef} />
+                <Form.Control as="textarea" name="textarea" placeholder="Write your message..." value={value} onChange={handleChange} ref={inputRef} />
             </Form.Group>
             <Button variant="primary" type="submit">
                 Отправить
